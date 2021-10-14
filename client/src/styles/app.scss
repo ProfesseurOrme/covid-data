@@ -1,0 +1,14 @@
+@import "~bulma/bulma";
+
+
+html, body {
+    height: 100%;
+}
+
+.hero-body {
+    min-height: 100vh;
+}
+.leaflet-container {
+    width: 100%;
+    height: 80vh;
+}
