@@ -2,4 +2,8 @@ const FR_GLOBAL_COVID_STATISTICS = `https://dashboard.covid19.data.gouv.fr/data/
 
 const FR_INCIDENCE_RATE = `https://data.widgets.dashboard.covid19.data.gouv.fr/taux_incidence.json`;
 
-export {FR_GLOBAL_COVID_STATISTICS, FR_INCIDENCE_RATE};
+const FR_GEOJSON_DEPARTMENTS = `https://france-geojson.gregoiredavid.fr/repo/departements.geojson`;
+
+const FR_GEOJSON_REGIONS = `https://france-geojson.gregoiredavid.fr/repo/regions.geojson`;
+
+export {FR_GLOBAL_COVID_STATISTICS, FR_INCIDENCE_RATE, FR_GEOJSON_DEPARTMENTS, FR_GEOJSON_REGIONS};

@@ -1,14 +1,31 @@
-@import "~bulma/bulma";
+@import "node_modules/bulma/bulma";
 
 
 html, body {
     height: 100%;
 }
 
-.hero-body {
-    min-height: 100vh;
+body {
+    background-color: #fafafa;
 }
+
+.cvd__card {
+    border-radius: 1.1rem;
+    margin: 0 2%;
+}
+
+
+.cvd__header {
+    margin: 20px 2%;
+}
+
 .leaflet-container {
     width: 100%;
-    height: 80vh;
+    height: 70vh;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+}
+
+.leaflet-bottom.leaflet-right {
+    display: none;
 }

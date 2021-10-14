@@ -1,10 +1,10 @@
 import React from 'react';
-import CountryMap from "./map/CountryMap";
+import Map from "./map/Map";
 
 const App = () => {
   return (
-      <CountryMap>
-      </CountryMap>
+      <Map>
+      </Map>
   );
 }
 
