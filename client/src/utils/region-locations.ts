@@ -1,4 +1,5 @@
 type regionLocations = Array<region>;
+type omLocations = Array<om>
 
 type region = {
     name : string,
@@ -6,12 +7,19 @@ type region = {
     coordinates : coordinatesFormat
 };
 
+interface om extends region {
+    zoom: number,
+    minZoom : number
+}
+
 type coordinatesFormat = {
     latitude: number,
     longitude: number
 }
 
-const regionsCoordinates : regionLocations = [
+
+
+const regionsMetropoleCoordinates : regionLocations = [
     {
         name : "Grand Est",
         code : "44",
@@ -118,4 +126,57 @@ const regionsCoordinates : regionLocations = [
     }
 ];
 
-export {regionsCoordinates};
+const outreMerMetropoleCoordinates : omLocations = [
+    {
+        name : "Guadeloupe",
+        code : "01",
+        coordinates : {
+            latitude : 16.2333,
+            longitude :  -61.5167
+        },
+        zoom : 8,
+        minZoom : 8
+    },
+    {
+        name : "Martinique",
+        code : "02",
+        coordinates : {
+            latitude : 14.7333,
+            longitude :  -60.9667
+        },
+        zoom : 8,
+        minZoom : 8
+    },
+    {
+        name : "Guyane",
+        code : "03",
+        coordinates : {
+            latitude : 4.333,
+            longitude :  -53
+        },
+        zoom : 6,
+        minZoom : 6
+    },{
+        name : "La Réunion",
+        code : "04",
+        coordinates : {
+            latitude : 	-21.115,
+            longitude :  55.536
+        },
+        zoom : 8,
+        minZoom : 8
+    },{
+        name : "Mayotte",
+        code : "06",
+        coordinates : {
+            latitude :  -12.782,
+            longitude :  45.228
+        },
+        zoom : 9,
+        minZoom : 9
+    }
+];
+
+
+
+export {regionsMetropoleCoordinates, outreMerMetropoleCoordinates};

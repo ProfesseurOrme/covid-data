@@ -1,15 +1,13 @@
 import React from "react";
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
-import { getData, GlobalData } from "../../helpers/agregate";
-import MapLocation from "./MapState";
+import {FrData, getData, GlobalData } from "../../helpers/agregate";
+import MapComponent from "./MapComponent";
+import {outreMerMetropoleCoordinates} from "../../utils/region-locations";
+import  Stats from "../stats/Stats";
 
 const Map : React.FunctionComponent = () => {
 
-
     const [data, setData] = React.useState<GlobalData|null>(null);
-    const [selectType, setSelectType] = React.useState<string>("departments");
     const [loaded, setLoaded ] = React.useState<boolean>(false);
-
 
     React.useEffect(() => {
         getData()
@@ -21,83 +19,96 @@ const Map : React.FunctionComponent = () => {
             })
     }, [loaded])
 
-    const changeSelectDataType = (event : React.ChangeEvent<HTMLSelectElement>) => {
-        const value = event.target.value;
-
-        setSelectType(value);
-        setLoaded(false);
+    const styleFr = {
+        width: "100%",
+        minHeight: "60vh"
     }
 
+    const styleOm = {
+        width : "100%",
+        height : "250px"
+    }
+
+    const renderOutreMerMap = () => {
+        if(data !== null) {
+            const codeInsee =  ["01", "02", "03", "04", "06"];
+
+            let array : FrData[] = [];
+
+            codeInsee.forEach((value) => {
+                let obj : FrData | undefined = data.regions.find(item => item.code === value);
+                if(obj !== undefined)
+                {
+                    array.push(obj)
+                }
+            })
+            return (
+                array.map((region) => {
+                    return (
+                        outreMerMetropoleCoordinates.map((coordinateData) => {
+                            if(region.code === coordinateData.code) {
+                                return (
+                                    <MapComponent
+                                        fixed={false}
+                                        title={coordinateData.name}
+                                        style={styleOm}
+                                        key={region.code}
+                                        data={[region]}
+                                        center={[coordinateData.coordinates.latitude, coordinateData.coordinates.longitude]}
+                                        classNameOM={"cvd_map_om"}
+                                        properties={{zoom : coordinateData.zoom, minZoom : coordinateData.minZoom}}
+                                    >
+                                    </MapComponent>
+                                )
+                            } else {
+                                return <></>
+                            }
+                        })
+                    )
+                })
+            )
+
+        } else {
+            return <></>
+        }
+    }
 
     if(loaded) {
         return (
             <>
-                <div className="columns is-mobile">
-                    <div className="column">
-                        <div className="card cvd__card cvd__header">
-                            <div className="card-content">
-                                <div className="columns is-mobile">
-                                    <div className="column">
-                                        <p className="title is-4 cvd-card__title">John Smith</p>
-                                    </div>
-                                    <div className="column">
-                                        <div className="select">
-                                            <select onChange={changeSelectDataType}>
-                                                <option value={"departments"}>Departments</option>
-                                                <option value={"regions"}>Regions</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                <div className={"columns is-desktop"}>
+                    <div className={"column"}>
+                        <div className={"card cvd__card cvd__header"}>
+                            <div className={"columns is-mobile"}>
+                                <div className={"column"}>
+                                    <h1 className={"cvd-card__title"}>Test - Data Covid</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="columns is-mobile">
-                    <div className="column">
-                        <div className="card cvd__card">
-                            <MapContainer center={[46.22, 2.21]} zoom={6} minZoom={6}>
-                                <TileLayer
-                                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                />
-                                {
-                                    data !== null ?
+                <div className={"columns is-desktop"}>
+                    <MapComponent
+                        fixed={true}
+                        title={"Metropole"}
+                        style={styleFr}
+                        key={"fr"}
+                        center={[46.22, 2.21]}
+                        data={data!!.departments}
+                        properties={{zoom : 5, minZoom : 5}}
+                    >
+                    </MapComponent>
+                    <div className={"colmun"}>
 
-                                        <>{
-                                            setSelectType === "departments" ?
-                                                {
-                                                    data.departments.map((item) => {
-                                                        const geoJSONData: GeoJSON.GeoJsonObject = item.geojson;
-
-                                                        return (
-                                                            <MapLocation key={item.code} geojsonData={geoJSONData}
-                                                                         item={item}>
-                                                            </MapLocation>
-                                                        )
-
-                                                    })
-                                                }
-                                                :
-                                                {
-                                                    data.regions.map((item) => {
-                                                        const geoJSONData: GeoJSON.GeoJsonObject = item.geojson;
-
-                                                        return (
-                                                            <MapLocation key={item.code} geojsonData={geoJSONData}
-                                                                         item={item}>
-                                                            </MapLocation>
-                                                        )
-
-                                                    })
-                                                }
-                                        }
-                                    </>
-                                    :
-                                        <></>
-                                }
-                            </MapContainer>
-                        </div>
+                    </div>
+                </div>
+                <div className={"columns is-desktop"}>
+                    {renderOutreMerMap()}
+                </div>
+                <div className={"columns is-desktop"}>
+                    <div className={"column"}>
+                        <Stats data={data!!}>
+                        </Stats>
                     </div>
                 </div>
             </>

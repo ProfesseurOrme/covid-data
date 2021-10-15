@@ -2,12 +2,12 @@ import React  from "react";
 import { Popup, GeoJSON } from 'react-leaflet';
 import {FrData} from "../../helpers/agregate";
 
-type MapLocationProps = {
+type MapShapeGeojsonProps = {
     geojsonData : GeoJSON.GeoJsonObject,
     item : FrData
 }
 
-const MapLocation : React.FunctionComponent<MapLocationProps> = (props) => {
+const MapShapeGeojson : React.FunctionComponent<MapShapeGeojsonProps> = (props) => {
 
     const setColor = (rate : number) : string => {
         if(rate >= 50 && rate <150 ) {
@@ -36,4 +36,4 @@ const MapLocation : React.FunctionComponent<MapLocationProps> = (props) => {
     )
 }
 
-export default MapLocation;
+export default MapShapeGeojson;
