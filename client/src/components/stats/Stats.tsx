@@ -1,42 +1,35 @@
 import React from "react"
+import { Card, Tab, Tabs } from "react-bootstrap";
 import { GlobalData } from "../../helpers/agregate";
-import StatsPerState from "./StatsPerState";
 
-type StatsProps = {
+interface StatsProps {
     data : GlobalData
 }
 
 const Stats : React.FunctionComponent<StatsProps> = (props) => {
+
+    const [key, setKey] = React.useState<string|null>();
     return (
-        <article className={"panel is-info"}>
-
-            <p className={"panel-heading"}>
+        <Card>
+            <Card.Header>
                 Statistiques globales
-            </p>
-
-            <div className="tabs is-smal">
-                <ul>
-                    <li className="is-active"><a href={"#departements"}>Départements</a></li>
-                    <li><a href={"#regions"}>Régions</a></li>
-                </ul>
-            </div>
-            <div className="panel-block">
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th><abbr title="Played">Pld</abbr></th>
-                        <th><abbr title="Won">W</abbr></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>38</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </article>
+            </Card.Header>
+            <Card.Body>
+                <Tabs
+                    id="controlled-tab-example"
+                    activeKey={key!!}
+                    onSelect={(k) => setKey(k)}
+                    className="mb-3"
+                >
+                    <Tab eventKey="home" title="Home">
+                        {"Test"}
+                    </Tab>
+                    <Tab eventKey="profile" title="Profile">
+                        {'Test 2'}
+                    </Tab>
+                </Tabs>
+            </Card.Body>
+        </Card>
     )
 }
 

@@ -2,8 +2,9 @@ import React from "react";
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import MapShapeGeojson from "./MapShapeGeojson";
 import {FrData} from "../../helpers/agregate"
+import { Col } from "react-bootstrap";
 
-type MapComponentProps = {
+interface MapComponentProps {
     center : [number, number],
     data : FrData[],
     dataDptOutreMer ? : FrData,
@@ -25,6 +26,10 @@ const MapComponent : React.FunctionComponent<MapComponentProps> = (props) => {
 
             return (
                 data.map((item) => {
+
+                    return (<></>)
+
+                    /*
                     const geoJSONData: GeoJSON.GeoJsonObject = item.geojson;
 
                     return (
@@ -35,7 +40,7 @@ const MapComponent : React.FunctionComponent<MapComponentProps> = (props) => {
                             item={item}
                         >
                         </MapShapeGeojson>
-                    )
+                    ) */
 
                 })
             )
@@ -46,7 +51,7 @@ const MapComponent : React.FunctionComponent<MapComponentProps> = (props) => {
     }
 
     return (
-        <div className={"column"}>
+        <Col>
             <h4 className={"title is-4"}>{props.title}</h4>
             <div className={props.classNameOM ? `${props.classNameOM} card cvd__card` : "card cvd__card"}>
                 <MapContainer
@@ -66,7 +71,7 @@ const MapComponent : React.FunctionComponent<MapComponentProps> = (props) => {
                     {renderFeature(props.data)}
                 </MapContainer>
             </div>
-        </div>
+        </Col>
     )
 }
 

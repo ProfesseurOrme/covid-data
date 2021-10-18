@@ -1,6 +1,6 @@
 import express from "express";
 import fetch from "node-fetch";
-import {FR_GLOBAL_COVID_STATISTICS, FR_INCIDENCE_RATE, FR_GEOJSON_DEPARTMENTS, FR_GEOJSON_REGIONS} from "../utils/urls.js"
+import {FR_GLOBAL_COVID_STATISTICS, FR_INCIDENCE_RATE, FR_GEOJSON_DEPARTMENTS, FR_GEOJSON_REGIONS, FR_POSITIVES_CASES} from "../utils/urls.js"
 
 const router = express.Router();
 
@@ -21,10 +21,25 @@ router.get("/data/statistics/global", (req, res, next) => {
     ;
 });
 
+router.get("/data/statistics/positives-cases", (req, res, next) => {
+
+    fetch(FR_POSITIVES_CASES, settings)
+        .then((result) => result.json())
+        .then((json) => {
+            res.status(200).json(json)
+        })
+        .catch((error) => {
+            res.status(400).json({
+                message: error
+            })
+        })
+    ;
+})
+
 router.get("/data/statistics/incidence-rate", (req, res, next) => {
 
     fetch(FR_INCIDENCE_RATE, settings)
-        .then((result => result.json()))
+        .then((result) => result.json())
         .then((json) => {
             res.status(200).json(json);
         })

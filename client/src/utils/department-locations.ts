@@ -1,17 +1,6 @@
-type departmentLocations = Array<department>;
+import { States } from "./IStates";
 
-type department = {
-    name : string,
-    coordinates : coordinatesFormat,
-    code : string
-};
-
-type coordinatesFormat = {
-    latitude: number,
-    longitude: number
-}
-
-const departmentCoordinates : departmentLocations = [
+const departmentCoordinates : States = [
     {
         name : "Ain",
         code : "01",

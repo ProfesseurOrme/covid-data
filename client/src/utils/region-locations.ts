@@ -1,25 +1,7 @@
-type regionLocations = Array<region>;
-type omLocations = Array<om>
-
-type region = {
-    name : string,
-    code: string,
-    coordinates : coordinatesFormat
-};
-
-interface om extends region {
-    zoom: number,
-    minZoom : number
-}
-
-type coordinatesFormat = {
-    latitude: number,
-    longitude: number
-}
+import { States } from "./IStates";
 
 
-
-const regionsMetropoleCoordinates : regionLocations = [
+const regionsMetropoleCoordinates : States = [
     {
         name : "Grand Est",
         code : "44",
@@ -126,7 +108,7 @@ const regionsMetropoleCoordinates : regionLocations = [
     }
 ];
 
-const outreMerMetropoleCoordinates : omLocations = [
+const outreMerMetropoleCoordinates : States = [
     {
         name : "Guadeloupe",
         code : "01",
@@ -134,8 +116,10 @@ const outreMerMetropoleCoordinates : omLocations = [
             latitude : 16.2333,
             longitude :  -61.5167
         },
-        zoom : 8,
-        minZoom : 8
+        properties : {
+            zoom : 8,
+            minZoom : 8
+        }
     },
     {
         name : "Martinique",
@@ -144,8 +128,10 @@ const outreMerMetropoleCoordinates : omLocations = [
             latitude : 14.7333,
             longitude :  -60.9667
         },
-        zoom : 8,
-        minZoom : 8
+        properties: {
+            zoom : 8,
+            minZoom : 8
+        }
     },
     {
         name : "Guyane",
@@ -154,26 +140,34 @@ const outreMerMetropoleCoordinates : omLocations = [
             latitude : 4.333,
             longitude :  -53
         },
-        zoom : 6,
-        minZoom : 6
-    },{
+        properties: {
+            zoom : 6,
+            minZoom : 6
+        }
+    },
+    {
         name : "La Réunion",
         code : "04",
         coordinates : {
             latitude : 	-21.115,
             longitude :  55.536
         },
-        zoom : 8,
-        minZoom : 8
-    },{
+        properties: {
+            zoom : 8,
+            minZoom : 8
+        }
+    },
+    {
         name : "Mayotte",
         code : "06",
         coordinates : {
             latitude :  -12.782,
             longitude :  45.228
         },
-        zoom : 9,
-        minZoom : 9
+        properties: {
+            zoom : 9,
+            minZoom : 9
+        }
     }
 ];
 
