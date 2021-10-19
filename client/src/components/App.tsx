@@ -1,14 +1,11 @@
 import React from 'react';
-import { getData } from '../helpers/agregate';
-import Map from "./map/Map";
+import Home from './Home';
 
 const App = () => {
 
-    React.useEffect(() => {
-        getData();
-    })
   return (
-      <></>
+      <Home>
+      </Home>
   );
 }
 

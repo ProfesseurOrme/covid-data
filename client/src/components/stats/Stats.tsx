@@ -1,9 +1,9 @@
 import React from "react"
 import { Card, Tab, Tabs } from "react-bootstrap";
-import { GlobalData } from "../../helpers/agregate";
+import { GeoData } from "../../helpers/IAgregateGeo";
 
 interface StatsProps {
-    data : GlobalData
+    data : GeoData
 }
 
 const Stats : React.FunctionComponent<StatsProps> = (props) => {

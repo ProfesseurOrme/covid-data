@@ -1,58 +1,18 @@
 import axios from "axios";
+import {data, states, value} from "../helpers/IData"
 
-const getGlobalStatistics = async () => {
-    await axios.get("http://localhost:3001/api/data/statistics/global")
+const getIncidenceRate = axios.get<data>("http://localhost:3001/api/data/statistics/incidence-rate")
         .then((res) => {
             return res.data
-        })
-        .catch((error) => {
-            return {
-                code : error.response.status,
-                message : error.message
-            }
         })
     ;
-}
 
-const getDataPerStateAndDepartment = async () => {
-    await axios.get("http://localhost:3001/api/data/statistics/incidence-rate")
-        .then((res) => {
-            return res.data
-        })
-        .catch((error) => {
-            return {
-                code : error.response.status,
-                message : error.message
-            }
-        })
-    ;
-}
 
-const getDepartmentsCoordinates = async () => {
-    await axios.get("http://localhost:3001/api/data/departments")
-        .then((res) => {
-            return res.data
-        })
-        .catch((error) => {
-            return {
-                code : error.response.status,
-                message : error.message
-            }
-        })
-}
+const getPositivesCases = axios.get<data>("http://localhost:3001/api/data/statistics/positives-cases")
+    .then((res) => {
+        return res.data
+    })
+;
 
-const getStatesCoordinates = async() => {
-    await axios.get("http://localhost:3001/api/data/regions")
-        .then((res) => {
-            return res.data
-        })
-        .catch((error) => {
-            return {
-                code : error.response.status,
-                message : error.message
-            }
-        })
-    ;
-}
 
-export {getGlobalStatistics , getDataPerStateAndDepartment, getStatesCoordinates, getDepartmentsCoordinates};
+export {getIncidenceRate, getPositivesCases};

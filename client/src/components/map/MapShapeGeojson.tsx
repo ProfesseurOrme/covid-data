@@ -1,15 +1,18 @@
 import React  from "react";
 import { Popup, GeoJSON } from 'react-leaflet';
-import {FrData} from "../../helpers/agregate";
+import {StateData} from "../../helpers/IAgregateGeo";
+import { states } from "../../helpers/IData";
 
 type MapShapeGeojsonProps = {
     geojsonData : GeoJSON.GeoJsonObject,
-    item : FrData
+    item : StateData,
+    data: states | null
 }
 
 const MapShapeGeojson : React.FunctionComponent<MapShapeGeojsonProps> = (props) => {
 
     const setColor = (rate : number) : string => {
+        console.log(rate)
         if(rate >= 50 && rate <150 ) {
             return "orange";
         } else if(rate >= 150 && rate < 250) {
@@ -22,7 +25,7 @@ const MapShapeGeojson : React.FunctionComponent<MapShapeGeojsonProps> = (props) 
     }
 
     return (
-        <GeoJSON key={props.item.code} style={{color : setColor(parseInt(props.item.incidence_rate.last_value))}} data={props.geojsonData}>
+        <GeoJSON key={props.item.code} style={{color : setColor(parseFloat(props.data!!.last_value))}} data={props.geojsonData}>
             <Popup>
                 <p>{props.item.name}</p>
                 <button
