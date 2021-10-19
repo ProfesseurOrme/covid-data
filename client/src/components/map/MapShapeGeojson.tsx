@@ -12,7 +12,6 @@ type MapShapeGeojsonProps = {
 const MapShapeGeojson : React.FunctionComponent<MapShapeGeojsonProps> = (props) => {
 
     const setColor = (rate : number) : string => {
-        console.log(rate)
         if(rate >= 50 && rate <150 ) {
             return "orange";
         } else if(rate >= 150 && rate < 250) {
@@ -28,6 +27,7 @@ const MapShapeGeojson : React.FunctionComponent<MapShapeGeojsonProps> = (props) 
         <GeoJSON key={props.item.code} style={{color : setColor(parseFloat(props.data!!.last_value))}} data={props.geojsonData}>
             <Popup>
                 <p>{props.item.name}</p>
+                <p>Taux d'incidence : {props.data!!.last_value}</p>
                 <button
                     id="button"
                     className="btn btn-primary"

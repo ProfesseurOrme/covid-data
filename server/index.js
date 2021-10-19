@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import {router} from "./api/data.js";
+import {routerData} from "./api/statistics.js";
+import {routerGeo} from "./api/geojson.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -15,7 +16,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/api", router);
+app.use("/api", routerData);
+app.use("/api", routerGeo);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
