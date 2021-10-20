@@ -15,4 +15,8 @@ type GeoJSONObjects = {
     features : Array<any>
 }
 
-export type {GeoData, StateData, GeoJSONObjects};
+export type {
+    GeoData,
+    StateData,
+    GeoJSONObjects
+};

@@ -1,7 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
-import {routerData} from "./api/statistics.js";
-import {routerGeo} from "./api/geojson.js";
+import {
+    routerData
+} from "./api/statistics.js";
+import {
+    routerGeo
+} from "./api/geojson.js";
 
 const PORT = process.env.PORT || 3001;
 

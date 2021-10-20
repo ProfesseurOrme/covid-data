@@ -20,7 +20,7 @@ $grid-breakpoints: (
 * {
     font-family: var(--font-family);
     //noinspection CssInvalidPropertyValue
-    font-size: calc(12px + (16 - 12) * (( 100vw - 300px) / (1600 - 300)));
+    font-size: calc(11px + (16 - 11) * (( 100vw - 300px) / (1600 - 300)));
 }
 
 html, body {
@@ -41,12 +41,20 @@ body {
     border-radius: 6px;
 }
 
+@mixin text_nowrap {
+
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+
 .leaflet-bottom.leaflet-right {
     display: none;
 }
 
 .container-fluid {
     margin: 15px 0;
+    padding: 0.2rem 1.2rem;
 }
 
 .card {
@@ -57,6 +65,26 @@ body {
 
 .title {
     font-weight: bold;
+}
+
+.title {
+    @include text_nowrap;
+}
+
+.cvd-stats-columns {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+}
+
+.cvd-stats {
+    .card-header {
+        padding: 0.7rem 1.3rem;
+    }
+    .card-body {
+        padding: 1rem 0 0 0;
+    }
 }
 
 .cvd-card__title {

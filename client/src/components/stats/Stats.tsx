@@ -1,33 +1,26 @@
 import React from "react"
-import { Card, Tab, Tabs } from "react-bootstrap";
-import { GeoData } from "../../helpers/IAgregateGeo";
+import {
+    Card,
+} from "react-bootstrap";
 
 interface StatsProps {
-    data : GeoData
+    global : boolean
+    title: string,
+    headerColor : string,
+    component : JSX.Element
 }
 
 const Stats : React.FunctionComponent<StatsProps> = (props) => {
 
-    const [key, setKey] = React.useState<string|null>();
     return (
-        <Card>
-            <Card.Header>
-                Statistiques globales
+        <Card className={"cvd-stats"}>
+            <Card.Header as={"h5"} className={"text-white"} style={{
+                backgroundColor : props.headerColor
+            }}>
+                {props.title}
             </Card.Header>
-            <Card.Body>
-                <Tabs
-                    id="controlled-tab-example"
-                    activeKey={key!!}
-                    onSelect={(k) => setKey(k)}
-                    className="mb-3"
-                >
-                    <Tab eventKey="home" title="Home">
-                        {"Test"}
-                    </Tab>
-                    <Tab eventKey="profile" title="Profile">
-                        {'Test 2'}
-                    </Tab>
-                </Tabs>
+            <Card.Body >
+                {props.component}
             </Card.Body>
         </Card>
     )

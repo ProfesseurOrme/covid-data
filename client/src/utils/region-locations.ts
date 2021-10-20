@@ -1,4 +1,6 @@
-import { States } from "./IStates";
+import {
+    States
+} from "./IStates";
 
 
 const regionsMetropoleCoordinates : States = [
@@ -173,4 +175,7 @@ const outreMerMetropoleCoordinates : States = [
 
 
 
-export {regionsMetropoleCoordinates, outreMerMetropoleCoordinates};
+export {
+    regionsMetropoleCoordinates,
+    outreMerMetropoleCoordinates
+};

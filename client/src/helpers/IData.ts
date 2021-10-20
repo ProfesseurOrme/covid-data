@@ -24,4 +24,8 @@ type value = {
     value : string
 }
 
-export type {data, states, value}
+export type {
+    data,
+    states,
+    value
+}

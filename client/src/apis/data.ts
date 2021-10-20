@@ -1,11 +1,7 @@
 import axios from "axios";
-import {data, states, value} from "../helpers/IData";
-
-export const getGlobalStats = axios.get<any>("http://localhost:3001/api/data/statistics/global")
-    .then((res) => {
-        return res.data;
-    })
-;
+import {
+    data
+} from "../helpers/IData";
 
 export const getIncidenceRate = axios.get<data>("http://localhost:3001/api/data/statistics/incidence-rate")
     .then((res) => {
@@ -44,6 +40,12 @@ export const getTotalVaccinated = axios.get<data>("http://localhost:3001/api/dat
 ;
 
 export const getFirstShotVaccine = axios.get<data>("http://localhost:3001/api/data/statistics/first_shot_vaccine")
+    .then((res) => {
+        return res.data;
+    })
+;
+
+export const getTotalHomeReturns = axios.get<data>("http://localhost:3001/api/data/statistics/total_home_returns")
     .then((res) => {
         return res.data;
     })

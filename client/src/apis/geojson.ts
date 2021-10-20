@@ -1,5 +1,7 @@
 import axios from "axios";
-import { GeoJSONObjects } from "../helpers/IAgregateGeo";
+import {
+    GeoJSONObjects
+} from "../helpers/IAgregateGeo";
 
 export const getDepartmentsCoordinates = axios.get<GeoJSONObjects>("http://localhost:3001/api/data/departments")
     .then((res) => {

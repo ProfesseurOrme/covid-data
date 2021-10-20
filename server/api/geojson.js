@@ -39,4 +39,6 @@ routerGeo.get("/data/regions", (req, res, next) => {
     ;
 });
 
-export {routerGeo};
+export {
+    routerGeo
+};

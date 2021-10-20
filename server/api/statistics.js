@@ -1,7 +1,6 @@
 import express from "express";
 import fetch from "node-fetch";
 import {
-    FR_GLOBAL_COVID_STATISTICS,
     FR_INCIDENCE_RATE,
     FR_GEOJSON_DEPARTMENTS,
     FR_GEOJSON_REGIONS,
@@ -10,27 +9,13 @@ import {
     FR_INTENSIVE_CARE,
     FR_TOTAL_DEATH,
     FR_TOTAL_VACCINATED,
-    FR_FIRST_SHOT_VACCINE
+    FR_FIRST_SHOT_VACCINE,
+    FR_TOTAL_HOME_RETURNS
 } from "../utils/urls.js";
 
 const routerData = express.Router();
 
 const settings = {method : "GET"}
-
-routerData.get("/data/statistics/global", (req, res, next) => {
-
-    fetch(FR_GLOBAL_COVID_STATISTICS, settings)
-        .then(result => result.json())
-        .then((json) => {
-            res.status(200).json(json);
-        })
-        .catch((error) => {
-            res.status(400).json({
-                message : error
-            });
-        })
-    ;
-});
 
 routerData.get("/data/statistics/positives-cases", (req, res, next) => {
 
@@ -135,6 +120,23 @@ routerData.get("/data/statistics/first_shot_vaccine", (req, res, next) => {
     ;
 });
 
+routerData.get("/data/statistics/total_home_returns", (req, res, next) => {
+
+   fetch(FR_TOTAL_HOME_RETURNS, settings)
+       .then((result) => result.json())
+       .then((json) => {
+           res.status(200).json(json);
+       })
+       .catch((error) => {
+           res.status(400).json({
+              message : error
+           });
+       })
+   ;
+});
+
 routerData.get('/favicon.ico', (req, res) => res.status(204));
 
-export {routerData}
+export {
+    routerData
+}

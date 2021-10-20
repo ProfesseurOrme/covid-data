@@ -1,4 +1,6 @@
-import { States } from "./IStates";
+import {
+    States
+} from "./IStates";
 
 const departmentCoordinates : States = [
     {
@@ -763,4 +765,6 @@ const departmentCoordinates : States = [
     }
 ]
 
-export {departmentCoordinates};
+export {
+    departmentCoordinates
+};

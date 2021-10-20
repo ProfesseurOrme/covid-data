@@ -1,9 +1,19 @@
 import React from "react";
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import {
+    MapContainer,
+    TileLayer,
+    GeoJSON
+} from 'react-leaflet';
 import MapShapeGeojson from "./MapShapeGeojson";
-import {StateData} from "../../helpers/IAgregateGeo"
-import { Col } from "react-bootstrap";
-import {data, states, value} from "../../helpers/IData"
+import {
+    StateData
+} from "../../helpers/IAgregateGeo"
+import {
+    Col
+} from "react-bootstrap";
+import {
+    states
+} from "../../helpers/IData"
 
 interface MapProps {
     center : [number, number],
@@ -41,6 +51,8 @@ const Map : React.FunctionComponent<MapProps> = (props) => {
                                     >
                                     </MapShapeGeojson>
                                 )
+                            } else {
+                                return "";
                             }
                         })
                     )
@@ -53,14 +65,14 @@ const Map : React.FunctionComponent<MapProps> = (props) => {
     }
 
     return (
-        <Col>
+        <Col md >
             <h4 className={"title is-4"}>{props.title}</h4>
             <div className={props.classNameOM ? `${props.classNameOM} card cvd__card` : "card cvd__card"}>
                 <MapContainer
                     zoomControl={props.fixed}
                     dragging={props.fixed}
                     doubleClickZoom={props.fixed}
-                    scrollWheelZoom={props.fixed}
+                    scrollWheelZoom={false}
                     style={props.style}
                     center={props.center}
                     zoom={props.properties.zoom}

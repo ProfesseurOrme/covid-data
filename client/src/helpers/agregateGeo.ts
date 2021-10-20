@@ -1,9 +1,23 @@
-import {departmentCoordinates} from "../utils/department-locations";
-import {franceLocation} from "../utils/france-location";
-import {regionsMetropoleCoordinates ,outreMerMetropoleCoordinates} from "../utils/region-locations";
-import {States} from "../utils/IStates";
-import {GeoData, StateData, GeoJSONObjects} from "./IAgregateGeo"
-import { getDepartmentsCoordinates, getRegionsCoordinates } from '../apis/geojson';
+import {
+    departmentCoordinates
+} from "../utils/department-locations";
+import {
+    franceLocation
+} from "../utils/france-location";
+import {
+    regionsMetropoleCoordinates,
+    outreMerMetropoleCoordinates
+} from "../utils/region-locations";
+import {
+    States
+} from "../utils/IStates";
+import {
+    GeoJSONObjects
+} from "./IAgregateGeo"
+import {
+    getDepartmentsCoordinates,
+    getRegionsCoordinates
+} from '../apis/geojson';
 
 const getDataGeo  = async()  => {
 

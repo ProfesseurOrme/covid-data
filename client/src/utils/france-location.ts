@@ -1,4 +1,6 @@
-import { States } from "./IStates";
+import {
+    States
+} from "./IStates";
 
 const franceLocation : States = [
     {
@@ -11,4 +13,6 @@ const franceLocation : States = [
     }
 ]
 
-export {franceLocation};
+export {
+    franceLocation
+};
