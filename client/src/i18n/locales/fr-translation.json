@@ -1,0 +1,21 @@
+{
+  "test" : "C'est un test",
+  "graph" : {
+    "label" : {
+      "positives_cases" : "Nombre de nouveaux cas positifs journaliers",
+      "hospitalizations" : "Nombre de patients hospitalisés",
+      "total_vaccinated" : "Nombre de personnes totalement vaccinées",
+      "intensive_care" : "Nombre de personnes en soins intensifs",
+      "incidence_rate" : "Variation du taux d'incidence"
+    },
+    "select" : {
+      "options" : {
+        "positives_cases" : "Nombre de nouveaux cas positifs journaliers",
+        "hospitalizations" : "Nombre de patients hospitalisés",
+        "total_vaccinated" : "Nombre de personnes totalement vaccinées",
+        "intensive_care" : "Nombre de personnes en soins intensifs",
+        "incidence_rate" : "Variation du taux d'incidence"
+      }
+    }
+  }
+}

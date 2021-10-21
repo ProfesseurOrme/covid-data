@@ -119,6 +119,7 @@ const Home : React.FunctionComponent = () => {
 
 
             })
+
             return (
                 arrayGeo.map((region) => {
                     return (

@@ -108,7 +108,7 @@ const departmentCoordinates : States = [
         }
     },
     {
-        name : "Bouches-du-Rhône",
+        name : "Calvados",
         code : "14",
         coordinates : {
             latitude: 49.10,
