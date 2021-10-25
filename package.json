@@ -6,13 +6,15 @@
   "type": "module",
   "scripts": {
     "start": "nodemon server",
-    "front-start": "cd client && npm start"
+    "front-start": "cd client && npm start",
+    "front-build" : "cd client && npm build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-fetch": "^3.0.0"
   }

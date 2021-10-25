@@ -57,7 +57,7 @@ const ChartGlobal : React.FunctionComponent<ChartGlobalProps> = (props) => {
                     fill: true,
                     backgroundColor: 'rgb(231, 111, 81)',
                 },
-            ],
+            ]
         }
     };
 

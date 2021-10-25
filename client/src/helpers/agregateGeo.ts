@@ -15,20 +15,17 @@ import {
     GeoJSONObjects
 } from "./IAgregateGeo"
 import {
-    getDepartmentsCoordinates,
-    getRegionsCoordinates
+    getGeojson
 } from '../apis/geojson';
 
 const getDataGeo  = async()  => {
 
-    const departmentsCoordinates = await getDepartmentsCoordinates;
-
-    const regionsCoordinates = await getRegionsCoordinates;
+    const coordinates = await getGeojson;
 
     return {
         france: franceLocation,
-        departments: setGeoDataPerState(departmentsCoordinates, departmentCoordinates),
-        regions: setGeoDataPerState(regionsCoordinates, regionsMetropoleCoordinates.concat(outreMerMetropoleCoordinates))
+        departments: setGeoDataPerState(coordinates.departments, departmentCoordinates),
+        regions: setGeoDataPerState(coordinates.regions, regionsMetropoleCoordinates.concat(outreMerMetropoleCoordinates))
     }
 
 }

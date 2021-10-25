@@ -11,8 +11,6 @@ import {
     const evol_percentageFloat : number = parseFloat(evol_percentage);
     const valueFloat : number = parseFloat(value);
 
-    console.log([evol_percentage, evol_color, value])
-
     if(evol_color === "green" && evol_percentageFloat <= 0) {
         return (
             <>

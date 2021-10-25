@@ -18,14 +18,7 @@ import {
     Col
 } from "react-bootstrap";
 import {
-    getIncidenceRate,
-    getPositivesCases,
-    getHospitalizations,
-    getIntensiveCare,
-    getTotalDeath,
-    getTotalVaccinated,
-    getFirstShotVaccine,
-    getTotalHomeReturns
+    getStatistics
 } from "../apis/data";
 import {
     data,
@@ -58,15 +51,15 @@ const Home : React.FunctionComponent = () => {
         total_vaccinated : null,
         first_shot_vaccine : null,
         total_home_returns : null
-    })
+    });
+
     const [loaded, setLoaded ] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        setAllData()
+        setAppData()
             .then(() => {
-                setLoaded(true)
+                setLoaded(true);
             })
-        ;
     }, [loaded])
 
     const styleFr = {
@@ -79,30 +72,19 @@ const Home : React.FunctionComponent = () => {
         height : "250px"
     }
 
-    const setAllData = async() => {
-        await Promise.all([getIncidenceRate, getPositivesCases, getHospitalizations, getIntensiveCare, getTotalDeath, getTotalVaccinated, getFirstShotVaccine, getTotalHomeReturns])
-            .then(values => {
-                values[0] ? setDataCovid((prevState) => ({...prevState, incidence_rate : values[0]})) : setDataCovid((prevState) => ({...prevState, incidence_rate : null}));
-                values[1] ? setDataCovid((prevState) => ({...prevState, positives_cases : values[1]})) : setDataCovid((prevState) => ({...prevState, incidence_rate : null}));
-                values[2] ? setDataCovid((prevState) => ({...prevState, hospitalizations : values[2]})) : setDataCovid((prevState) => ({...prevState, incidence_rate : null}));
-                values[3] ? setDataCovid((prevState) => ({...prevState, intensive_care : values[3]})) : setDataCovid((prevState) => ({...prevState, intesive_care: null}));
-                values[4] ? setDataCovid((prevState) => ({...prevState, total_death : values[4]})) : setDataCovid((prevState) => ({...prevState, total_death: null}));
-                values[5] ? setDataCovid((prevState) => ({...prevState, total_vaccinated : values[5]})) : setDataCovid((prevState) => ({...prevState, total_vaccinated: null}));
-                values[6] ? setDataCovid((prevState) => ({...prevState, first_shot_vaccine : values[6]})) : setDataCovid((prevState) => ({...prevState, first_shot_vaccine: null}));
-                values[7] ? setDataCovid((prevState) => ({...prevState, total_home_returns : values[7]})) : setDataCovid((prevState) => ({...prevState, total_home_returns: null}));
-
+    const setAppData = async () => {
+        await getStatistics
+            .then(res => {
+                setDataCovid(res);
             })
-            .finally(() => {
-                getDataGeo()
-                    .then((res) => {
-                        setDataGeo(res)
-                    })
-                ;
+        ;
+
+        await getDataGeo()
+            .then(res => {
+                setDataGeo(res);
             })
         ;
     }
-
-
 
     const renderOutreMerMap = (incidenceRate : states[]) => {
         if(dataGeo !== null) {

@@ -56,7 +56,7 @@ const ChartsState : React.FunctionComponent<ChartsStateProps> = (props) => {
                             fill: true,
                             backgroundColor: 'rgb(231, 111, 81)',
                         },
-                    ],
+                    ]
                 }
             } else {
                 return undefined;

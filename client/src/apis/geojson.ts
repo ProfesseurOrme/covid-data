@@ -3,13 +3,7 @@ import {
     GeoJSONObjects
 } from "../helpers/IAgregateGeo";
 
-export const getDepartmentsCoordinates = axios.get<GeoJSONObjects>("http://localhost:3001/api/data/departments")
-    .then((res) => {
-        return res.data;
-    })
-;
-
-export const getRegionsCoordinates = axios.get<GeoJSONObjects>("http://localhost:3001/api/data/regions")
+export const getGeojson = axios.get<{departments : GeoJSONObjects, regions : GeoJSONObjects}>("http://localhost:3001/api/geojson")
     .then((res) => {
         return res.data;
     })
