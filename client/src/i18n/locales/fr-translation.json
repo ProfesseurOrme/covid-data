@@ -1,5 +1,27 @@
 {
-  "test" : "C'est un test",
+  "title" : {
+    "main" : "Covid Data",
+    "stats" : {
+      "evolution" : "Évolution des données",
+      "global" : "Statistiques globales"
+    }
+  },
+  "stats" : {
+    "titles" : {
+      "global" : "Statistiques globales",
+      "hospital" : "Statistiques hospitalières"
+    },
+    "labels" : {
+      "total_death" : "Total décès",
+      "first_shot_vaccine" : "Premières doses",
+      "positives_cases" : "Cas positifs journaliers",
+      "hospitalizations" : "Patients hospitalisés",
+      "total_vaccinated" : "Totalement vaccinés",
+      "intensive_care" : "Patients en réanimation",
+      "total_home_returns" : "Retours à domicile",
+      "incidence_rate" : "Taux d'incidence"
+    }
+  },
   "graph" : {
     "label" : {
       "positives_cases" : "Nombre de nouveaux cas positifs journaliers",
@@ -8,7 +30,20 @@
       "intensive_care" : "Nombre de personnes en soins intensifs",
       "incidence_rate" : "Variation du taux d'incidence"
     },
+    "tables" :{
+      "thead" : {
+        "name" : "Nom",
+        "incidence_rate" : "Taux d'incidence",
+        "positives_cases" : "Cas positifs",
+        "hospitalizations" : "Pt. Hospitalisés",
+        "intensive_care" : "Pt. Réanimation"
+      }
+    },
     "select" : {
+      "label" : {
+        "data": "Sélectionnez un jeu de données",
+        "state" : "Sélectionnez le lieu"
+      },
       "options" : {
         "positives_cases" : "Nombre de nouveaux cas positifs journaliers",
         "hospitalizations" : "Nombre de patients hospitalisés",

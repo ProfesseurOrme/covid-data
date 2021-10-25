@@ -89,9 +89,9 @@ const ChartsState : React.FunctionComponent<ChartsStateProps> = (props) => {
         <>
             <Row>
                 <Col className={"cvd-graph-select"}>
-                    <FloatingLabel controlId="floatingSelect" label="Sélectionnez un jeu de données">
-                        <Form.Select aria-label="selection d'un jeu de données" onChange={(event : React.ChangeEvent<HTMLSelectElement>) => setSelectState(event.target.value)}>
-                            <option key={0} value={""}>-- Sélectionnez le lieu --</option>
+                    <FloatingLabel controlId="floatingSelect" label={t("graph.select.label.state")}>
+                        <Form.Select aria-label={t("graph.select.label.state")} onChange={(event : React.ChangeEvent<HTMLSelectElement>) => setSelectState(event.target.value)}>
+                            <option key={0} value={""}>-- {t("graph.select.label.state")} --</option>
                             {
                                 props.states.map((item) => (
                                     <option key={item.code} value={item.code}>{item.code} - {item.name}</option>
@@ -106,9 +106,9 @@ const ChartsState : React.FunctionComponent<ChartsStateProps> = (props) => {
                     <>
                         <Row>
                             <Col className={"cvd-graph-select"}>
-                                <FloatingLabel controlId="floatingSelect" label="Sélectionnez un jeu de données">
-                                    <Form.Select aria-label="selection d'un jeu de données" onChange={(event : React.ChangeEvent<HTMLSelectElement>) => setSelectData(event.target.value)}>
-                                        <option key={0} value={""}>-- Sélectionnez un jeu de données --</option>
+                                <FloatingLabel controlId="floatingSelect" label={t("graph.select.label.data")}>
+                                    <Form.Select aria-label={t("graph.select.label.data")} onChange={(event : React.ChangeEvent<HTMLSelectElement>) => setSelectData(event.target.value)}>
+                                        <option key={0} value={""}>-- {t("graph.select.label.data")} --</option>
                                         {
                                             props.datas.map((item) => (
                                                 <option key={item.label} value={item.label}>{t(`graph.select.options.${item.label}`)}</option>

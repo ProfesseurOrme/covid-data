@@ -25,7 +25,7 @@ It was my first attempt to make this set of technologies work, but I still have 
     npm run start
 ```
 
-2- And start the front part in development mode with :
+3- And start the front part in development mode with :
 ```
     npm run front-start
 ```

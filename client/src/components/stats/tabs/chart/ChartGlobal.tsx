@@ -77,8 +77,8 @@ const ChartGlobal : React.FunctionComponent<ChartGlobalProps> = (props) => {
         <>
             <Row>
                 <Col className={"cvd-graph-select"}>
-                    <FloatingLabel controlId="floatingSelect" label="Sélectionnez un jeu de données">
-                        <Form.Select aria-label="selection d'un jeu de données" onChange={handleChange}>
+                    <FloatingLabel controlId="floatingSelect" label={t("graph.select.label.data")}>
+                        <Form.Select aria-label={t("graph.select.label.data")} onChange={handleChange}>
                             {
                                 props.datas.map((item) => (
                                     <option key={item.label} value={item.label}>{t(`graph.select.options.${item.label}`)}</option>

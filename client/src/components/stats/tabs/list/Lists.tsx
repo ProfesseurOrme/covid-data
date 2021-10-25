@@ -2,6 +2,7 @@ import React from "react"
 import {
     Table
 } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import {
     StateData
 } from "../../../../helpers/IAgregateGeo";
@@ -33,6 +34,8 @@ type Data = {
 }
 
 const Lists : React.FunctionComponent<ListsProps> = (props) => {
+
+    const {t} = useTranslation();
 
     const renderStats = (listData : ListData  , dataGeo : StateData[]) => {
         return (
@@ -66,11 +69,11 @@ const Lists : React.FunctionComponent<ListsProps> = (props) => {
         <Table responsive={"sm"} size={"sm"}>
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Taux d'incidence</th>
-                    <th>Cas positifs</th>
-                    <th>Pt. Hospitalisés</th>
-                    <th>Pt .Réanimation</th>
+                    <th>{t("graph.tables.thead.name")}</th>
+                    <th>{t("graph.tables.thead.incidence_rate")}</th>
+                    <th>{t("graph.tables.thead.positives_cases")}</th>
+                    <th>{t("graph.tables.thead.hospitalizations")}</th>
+                    <th>{t("graph.tables.thead.intensive_care")}</th>
                 </tr>
             </thead>
             <tbody>

@@ -27,6 +27,9 @@ import {
 import StatsColumn from "./stats/StatsColumn";
 import StatsTabLists from "./stats/tabs/StatsTabLists";
 import StatsTabCharts from "./stats/tabs/StatsTabCharts";
+import {
+    useTranslation
+} from "react-i18next";
 
 export type dataCovidState = {
     incidence_rate : data |null,
@@ -54,6 +57,8 @@ const Home : React.FunctionComponent = () => {
     });
 
     const [loaded, setLoaded ] = React.useState<boolean>(false);
+
+    const {t} = useTranslation();
 
     React.useEffect(() => {
         setAppData()
@@ -146,7 +151,7 @@ const Home : React.FunctionComponent = () => {
                     <Row>
                         <Col>
                             <Card className={"cvd-card cvd-header"}>
-                                <h1 className={"cvd-card__title title"}>Test - Data Covid</h1>
+                                <h1 className={"cvd-card__title title"}>{t("title.main")}</h1>
                             </Card>
                         </Col>
                     </Row>
@@ -174,12 +179,12 @@ const Home : React.FunctionComponent = () => {
                 <Container fluid>
                     <Row>
                         <Col>
-                            <Stats global={false} title={"Évolution des données"} headerColor={"#e76f51"} component={<StatsTabCharts dataGeo={dataGeo} dataCovid={dataCovid}/>}/>
+                            <Stats global={false} title={t("title.stats.evolution")} headerColor={"#e76f51"} component={<StatsTabCharts dataGeo={dataGeo} dataCovid={dataCovid}/>}/>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Stats global={false} title={"Statistiques globales"} headerColor={"#2a9d8f"} component={<StatsTabLists dataGeo={dataGeo} dataCovid={dataCovid}/>}/>
+                            <Stats global={false} title={t("title.stats.global")} headerColor={"#2a9d8f"} component={<StatsTabLists dataGeo={dataGeo} dataCovid={dataCovid}/>}/>
                         </Col>
                     </Row>
                 </Container>

@@ -26,14 +26,8 @@ const MapShapeGeojson : React.FunctionComponent<MapShapeGeojsonProps> = (props) 
     return (
         <GeoJSON key={props.item.code} style={{color : setColor(parseFloat(props.data!!.last_value))}} data={props.geojsonData}>
             <Popup>
-                <p>{props.item.name}</p>
-                <p>Taux d'incidence : {props.data!!.last_value}</p>
-                <button
-                    id="button"
-                    className="btn btn-primary"
-                >
-                    More Info
-                </button>
+                <p><strong>{props.item.name}</strong></p>
+                <p><strong>Taux d'incidence :</strong> {props.data!!.last_value}</p>
             </Popup>
         </GeoJSON>
     )
