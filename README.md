@@ -3,6 +3,8 @@
 
 Project based on French statistics of the Covid-19 pandemic. Made with React & Typescript for the front part, and with NodeJS for the back part. This project was carried out for educational purposes.
 
+![preview](https://github.com/ProfesseurOrme/covid-data/tree/main/client/public/preview.jpg?raw=true)
+
 
 The data used comes from [data.gouv.fr](https://www.data.gouv.fr/fr/pages/donnees-coronavirus/)
 
