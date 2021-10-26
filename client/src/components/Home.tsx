@@ -107,38 +107,42 @@ const Home : React.FunctionComponent = () => {
 
             })
 
-            return (
-                arrayGeo.map((region) => {
-                    return (
-                        outreMerMetropoleCoordinates.map((coordinateData) => {
-                            if(region.code === coordinateData.code) {
-                                let objData : states | undefined = incidenceRate.find((item : {code_level : string}) => item.code_level === region.code);
-                                if(objData !== undefined)
-                                {
-                                    return (
+            let objData : any[] = [];
 
-                                        <Map
-                                            fixed={false}
-                                            title={coordinateData.name}
-                                            style={styleOm}
-                                            key={region.code}
-                                            dataGeo={[region]}
-                                            dataIncidence={[objData]}
-                                            center={[coordinateData.coordinates.latitude, coordinateData.coordinates.longitude]}
-                                            classNameOM={"cvd_map_om"}
-                                            properties={{zoom : coordinateData.properties!!.zoom, minZoom : coordinateData.properties!!.minZoom}}
-                                        />
-                                    )
-                                }
-
-                            } else {
-                                return <></>
+            arrayGeo.forEach((region) => {
+                outreMerMetropoleCoordinates.forEach((coordinateData) => {
+                    if (region.code === coordinateData.code) {
+                        let obj: states | undefined = incidenceRate.find((item: { code_level: string }) => item.code_level === region.code);
+                        objData.push(
+                            {
+                            data: obj,
+                            geo: coordinateData,
+                            region : region
                             }
-                        })
-                    )
+                        );
+                    }
                 })
-            )
+            })
 
+            if(objData.length > 0) {
+                return (
+                    objData.map(item => {
+                        return(
+                            <Map
+                                fixed={false}
+                                title={item.geo.name}
+                                style={styleOm}
+                                key={item.region.code}
+                                dataGeo={[item.region]}
+                                dataIncidence={[item.data]}
+                                center={[item.geo.coordinates.latitude, item.geo.coordinates.longitude]}
+                                classNameOM={"cvd_map_om"}
+                                properties={{zoom : item.geo.properties!!.zoom, minZoom : item.geo.properties!!.minZoom}}
+                            />
+                        )
+                    })
+                )
+            }
         } else {
             return <></>
         }
