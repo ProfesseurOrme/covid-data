@@ -8,7 +8,7 @@ import {
 } from "../../../helpers/IAgregateGeo";
 import {
     dataCovidState
-} from "../../Home";
+} from "../../home/Home";
 import ChartGlobal from "./chart/ChartGlobal";
 import ChartsState from "./chart/ChartsState";
 

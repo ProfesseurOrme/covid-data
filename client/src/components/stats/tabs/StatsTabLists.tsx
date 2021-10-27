@@ -8,7 +8,7 @@ import {
 } from "../../../helpers/IAgregateGeo";
 import {
     dataCovidState
-} from "../../Home";
+} from "../../home/Home";
 import Lists from "./list/Lists";
 
 type StatsTabListsProps = {

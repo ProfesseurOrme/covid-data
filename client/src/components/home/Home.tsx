@@ -2,31 +2,30 @@ import React from "react";
 import {
     StateData,
     GeoData
-} from "../helpers/IAgregateGeo";
+} from "../../helpers/IAgregateGeo";
 import {
     getDataGeo
-} from "../helpers/agregateGeo";
-import Map from "./map/Map";
+} from "../../helpers/agregateGeo";
+import Map from "../map/Map";
 import {
     outreMerMetropoleCoordinates
-} from "../utils/region-locations";
-import  Stats from "./stats/Stats";
+} from "../../utils/region-locations";
+import  Stats from "../stats/Stats";
 import {
-    Card,
     Container,
     Row,
     Col
 } from "react-bootstrap";
 import {
     getStatistics
-} from "../apis/data";
+} from "../../apis/data";
 import {
     data,
     states
-} from "../helpers/IData";
-import StatsColumn from "./stats/StatsColumn";
-import StatsTabLists from "./stats/tabs/StatsTabLists";
-import StatsTabCharts from "./stats/tabs/StatsTabCharts";
+} from "../../helpers/IData";
+import StatsColumn from "../stats/StatsColumn";
+import StatsTabLists from "../stats/tabs/StatsTabLists";
+import StatsTabCharts from "../stats/tabs/StatsTabCharts";
 import {
     useTranslation
 } from "react-i18next";
@@ -151,15 +150,6 @@ const Home : React.FunctionComponent = () => {
     if(loaded) {
         return (
             <>
-                <Container fluid>
-                    <Row>
-                        <Col>
-                            <Card className={"cvd-card cvd-header"}>
-                                <h1 className={"cvd-card__title title"}>{t("title.main")}</h1>
-                            </Card>
-                        </Col>
-                    </Row>
-                </Container>
                 <Container fluid>
                     <Row>
                         <Map

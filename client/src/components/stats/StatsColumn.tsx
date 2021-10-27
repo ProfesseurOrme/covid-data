@@ -11,7 +11,7 @@ import {
 } from "../../utils/fncUtils";
 import {
     dataCovidState
-} from "../Home";
+} from "../home/Home";
 
 type StatsColumnProps = {
     dataCovid : dataCovidState

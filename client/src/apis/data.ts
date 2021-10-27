@@ -1,7 +1,7 @@
 import axios from "axios";
 import {
     dataCovidState
-} from "../components/Home";
+} from "../components/home/Home";
 
 export const getStatistics = axios.get<dataCovidState>("http://localhost:3001/api/statistics")
     .then((res) => {
