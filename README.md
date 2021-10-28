@@ -7,6 +7,9 @@ Project based on French statistics of the Covid-19 pandemic. Made with React & T
     <img src="https://raw.githubusercontent.com/ProfesseurOrme/covid-data/main/client/public/preview.jpg" alt="preview" width="auto" height="950">
 </p>
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/ProfesseurOrme/covid-data/main/client/public/preview_2.jpg" alt="preview" width="auto" height="950">
+</p>
 
 The data used comes from [data.gouv.fr](https://www.data.gouv.fr/fr/pages/donnees-coronavirus/)
 
