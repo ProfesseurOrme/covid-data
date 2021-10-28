@@ -1,6 +1,13 @@
-import React, {Dispatch, SetStateAction } from "react";
-import { Button } from "react-bootstrap";
-import { ISearchFeatures } from "../../apis/search";
+import React, {
+    Dispatch,
+    SetStateAction
+} from "react";
+import {
+    Button
+} from "react-bootstrap";
+import {
+    ISearchFeatures
+} from "../../apis/search";
 
 type SearchSuggestionsProps = {
     location : ISearchFeatures,

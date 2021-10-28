@@ -41,7 +41,7 @@
     },
     "select" : {
       "label" : {
-        "data": "Sélectionnez un jeu de données",
+        "data" : "Sélectionnez un jeu de données",
         "state" : "Sélectionnez le lieu"
       },
       "options" : {
@@ -51,6 +51,17 @@
         "intensive_care" : "Nombre de personnes en soins intensifs",
         "incidence_rate" : "Variation du taux d'incidence"
       }
+    }
+  },
+  "search" : {
+    "field_search" : {
+      "title" : "Recherchez vos indicateurs locaux"
+    },
+    "results" : {
+      "title" : "Recherche de statistiques par municipalité",
+      "no_results" : "Aucun résultats",
+      "reset" : "Réinitialiser la recherche",
+      "label_result" : "Évolution des indicateurs locaux"
     }
   }
 }

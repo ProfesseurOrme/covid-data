@@ -2,7 +2,7 @@ import React from "react";
 import {
     MapContainer,
     TileLayer,
-    GeoJSON
+    GeoJSON,
 } from 'react-leaflet';
 import MapShapeGeojson from "./MapShapeGeojson";
 import {

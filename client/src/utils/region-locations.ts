@@ -13,7 +13,7 @@ const regionsMetropoleCoordinates : States = [
         }
     },
     {
-        name : "Nouvelle Aquitaine",
+        name : "Nouvelle-Aquitaine",
         code : "75",
         coordinates : {
             latitude: 45.2,
@@ -21,7 +21,7 @@ const regionsMetropoleCoordinates : States = [
         }
     },
     {
-        name : "Auvergne Rhône-Alpes",
+        name : "Auvergne-Rhône-Alpes",
         code : "84",
         coordinates : {
             latitude : 45.52,
@@ -29,7 +29,7 @@ const regionsMetropoleCoordinates : States = [
         }
     },
     {
-        name : "Bourgogne Franche-Comté",
+        name : "Bourgogne-Franche-Comté",
         code : "27",
         coordinates : {
             latitude: 47.24,

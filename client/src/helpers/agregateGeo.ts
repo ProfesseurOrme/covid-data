@@ -43,7 +43,8 @@ const setGeoDataPerState = (geoJsonObjects : GeoJSONObjects, states : States) =>
                         geojson: {
                             type: "Feature",
                             properties: {
-                                name: geoJsonObject.properties.nom
+                                name: geoJsonObject.properties.nom,
+                                coordinates: [state.coordinates.latitude, state.coordinates.longitude]
                             },
                             geometry: {
                                 type: geoJsonObject.geometry.type,

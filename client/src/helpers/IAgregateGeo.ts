@@ -7,6 +7,10 @@ type GeoData = {
 type StateData =  {
     name : string,
     code : string,
+    coordinates : {
+        latitude : number,
+        longitude : number
+    }
     geojson : GeoJSON.Feature
 }
 

@@ -9,27 +9,64 @@ import {
     Row
 } from "react-bootstrap";
 import {
+    useTranslation
+} from "react-i18next";
+import {
     search,
     ISearchFeatures
 } from "../../apis/search";
-import SearchResult from "./SearchResult";
+import {
+    GeoData,
+    StateData
+} from "../../helpers/IAgregateGeo";
+import {
+    states
+} from "../../helpers/IData";
+import {
+    dataCovidState
+} from "../App";
+import Stats from "../stats/Stats";
+import StatsSearch from "../stats/tabs/StatsSearch";
+import SearchResult, {
+    ISearchResult
+} from "./SearchResult";
 import SearchSuggestion from "./SearchSuggestion";
 
-type SearchesState = {
+type SearchState = {
     searchData :  ISearchFeatures[] | [],
     loaded : boolean | null
 }
 
-const Search : React.FunctionComponent = () => {
+type SearchProps = {
+    dataCovid : dataCovidState,
+    dataGeo : GeoData
+}
+
+export type Data = {
+    incidence_rate : states,
+    positives_cases : states,
+    hospitalizations : states,
+    intensive_care : states,
+    total_vaccinated : states,
+    first_shot_vaccine : states
+}
+
+const Search : React.FunctionComponent<SearchProps> = (props) => {
 
     const defaultState = {
         searchData : [],
         loaded : null
     }
 
-    const [searches, setSearches] = React.useState<SearchesState>(defaultState);
+    const [searches, setSearches] = React.useState<SearchState>(defaultState);
     const [location, setLocation] = React.useState<ISearchFeatures | undefined>(undefined);
 
+    const cleanUpSearch = () : void => {
+        setSearches(defaultState);
+        setLocation(undefined);
+    }
+
+    const {t} = useTranslation();
 
     const handleSearch = async (event : React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -50,12 +87,56 @@ const Search : React.FunctionComponent = () => {
         }
     }
 
-    const cleanUpSearch = () : void => {
-        setSearches(defaultState);
-        setLocation(undefined);
+    const seekCovidData = (state : StateData, dataCovid : dataCovidState) => {
+        let newObj : Data | any = {};
+        Object.entries(dataCovid).forEach(([key, datas]) =>  {
+
+            datas!!.regions.forEach((data) => {
+                if(state.code === data.code_level) {
+                    newObj = {
+                        ...newObj,
+                        [key]: data,
+                    }
+                }
+            })
+        });
+        return newObj;
     }
 
-    console.log(searches)
+    const splitLocation = (location :string) : string[] => {
+
+        const reg = new RegExp(", ", "g");
+        return location.split(reg);
+    }
+
+    const getRegionName = (location : ISearchFeatures) : string => {
+
+        const locationInfos: string[] = splitLocation(location.properties.context);
+
+        return (locationInfos.length === 3) ? locationInfos[2] : locationInfos[1]
+    }
+
+    const seekData = () : ISearchResult | undefined => {
+
+        if(typeof location !== "undefined") {
+
+            const regionName = getRegionName(location);
+
+            const region: StateData | undefined = props.dataGeo.regions.find((item: { name: string }) => item.name === regionName)
+            return {
+                region_data: seekCovidData(region!!, props.dataCovid),
+                region_geo : region!!,
+                location : {
+                    name: location.properties.name,
+                    city_code: location.properties.postcode,
+                    coordinates_point: [ location.properties.x, location.properties.y ],
+                    center : [region!!.coordinates.latitude, region!!.coordinates.longitude]
+                }
+            }
+        } else {
+            return undefined;
+        }
+    }
 
     return (
         <>
@@ -67,7 +148,7 @@ const Search : React.FunctionComponent = () => {
                             <Col>
                                 <Card className={"cvd-stats"}>
                                     <Card.Title className={"mx-4 mt-4"}>
-                                        Recherchez vos indicateurs locaux
+                                        {t("search.field_search.title")}
                                     </Card.Title>
                                     <FloatingLabel
                                         controlId={"floatingInput"}
@@ -92,7 +173,7 @@ const Search : React.FunctionComponent = () => {
                                         <Col>
                                             <Card className={"cvd-stats"}>
                                                 <Card.Title className={"mx-4 mt-4"}>
-                                                    Recherche de statistiques par municipalité
+                                                    {t("search.results.title")}
                                                 </Card.Title>
                                                 <Card.Body>
                                                     {
@@ -105,7 +186,7 @@ const Search : React.FunctionComponent = () => {
                                                             })
                                                             :
                                                             <Card.Title className={"mx-4 mb-4"}>
-                                                                <strong>Aucun résultats</strong>
+                                                                <strong>{t("search.results.no_results")}</strong>
                                                             </Card.Title>
                                                     }
                                                 </Card.Body>
@@ -130,13 +211,21 @@ const Search : React.FunctionComponent = () => {
                                         size="lg"
                                         onClick={cleanUpSearch}
                                     >
-                                        Réinitialiser la recherche
+                                        {t("search.results.reset")}
                                     </Button>
                                 </div>
                             </Col>
                         </Row>
                     </Container>
-                    <SearchResult location={location}/>
+
+                    <SearchResult dataResult={seekData()!!} />
+                    <Container fluid>
+                        <Row>
+                            <Col>
+                                <Stats global={false} title={`${t("search.results.label_result")} : ${getRegionName(location)}`}headerColor={"#e76f51"} component={<StatsSearch dataCovid={seekData()!!}/>}/>
+                            </Col>
+                        </Row>
+                    </Container>
                 </>
 
         }
