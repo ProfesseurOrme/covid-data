@@ -49,7 +49,7 @@ const ChartGlobal : React.FunctionComponent<ChartGlobalProps> = (props) => {
         const dataset : ChartGlobalPropsValues | null= setData(props.datas);
 
         return {
-            labels: dataset!!.data.values.map((item) => reformatDate(item.date)),
+            labels: dataset!!.data.values.map((item) => item.date),
             datasets: [
                 {
                     label: t(`graph.label.${dataset!!.label}`),

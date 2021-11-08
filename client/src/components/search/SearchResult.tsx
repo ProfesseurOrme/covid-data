@@ -11,7 +11,7 @@ import {
 import Map from "../map/Map";
 import {
     Data
-} from "./Search.jsx";
+} from "./Search";
 import SearchColumnStats from "./SearchColumnStats";
 
 type SearchResultProps = {

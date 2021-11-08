@@ -48,7 +48,7 @@ const ChartsState : React.FunctionComponent<ChartsStateProps> = (props) => {
             let objGeoData : states | undefined =  obj.data.find((o : {code_level: string}) => o.code_level=== selectState);
             if(typeof  objGeoData !== "undefined") {
                 return {
-                    labels: objGeoData.values.map((item: { date: any; }) => reformatDate(item.date)),
+                    labels: objGeoData.values.map((item: { date: any; }) => item.date),
                     datasets: [
                         {
                             label: t(`graph.label.${obj.label}`),

@@ -11,7 +11,7 @@ import {
 } from "../../utils/fncUtils";
 import {
     Data
-} from "./Search.jsx.js";
+} from "./Search";
 
 type StatsColumnProps = {
     dataCovid : Data

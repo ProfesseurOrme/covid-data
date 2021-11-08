@@ -61,7 +61,7 @@ const regionsMetropoleCoordinates : States = [
         }
     },
     {
-        name : "Île de France",
+        name : "Île-de-France",
         code : "11",
         coordinates : {
             latitude : 48.69,

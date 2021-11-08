@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "../i18n/i18n";
 import Header from './Header';
-import Search from './search/Search.jsx';
+import Search from './search/Search';
 import {
     getStatistics
 } from '../apis/data';

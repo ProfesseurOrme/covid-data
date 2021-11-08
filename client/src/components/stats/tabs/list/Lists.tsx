@@ -2,7 +2,9 @@ import React from "react"
 import {
     Table
 } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
+import {
+    useTranslation
+} from "react-i18next";
 import {
     StateData
 } from "../../../../helpers/IAgregateGeo";
